@@ -13,17 +13,26 @@ public class Tarea13 {
     private static final String driver = "com.mysql.cj.jdbc.Driver";
     private static final String bbdd = "jdbc:mysql://localhost:3306/matricula";
     private static final String usuario="root";
-    private static final String clave="";
+    private static final String clave="root";
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         // TODO code application logic here
         Connection conex = null;
         conex = Conexion();
         
         if(conex != null) {
             System.out.println("Conectado correctamente");
+            
+             PreparedStatement ps;
+             ps = conex.prepareStatement("select * from productos;");
+             ResultSet rs;
+             rs = ps.executeQuery();
+             while(rs.next()) {
+                String producto = rs.getString("Nomb_Producto");
+                System.out.println(producto);
+            }
         }
         else {
             System.out.println("No has podido conectarte ");
