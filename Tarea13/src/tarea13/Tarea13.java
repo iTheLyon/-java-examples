@@ -11,7 +11,7 @@ import java.sql.*;
 public class Tarea13 {
 
     private static final String driver = "com.mysql.cj.jdbc.Driver";
-    private static final String bbdd = "jdbc:mysql://localhost:3306/matricula";
+    private static final String bbdd = "jdbc:mysql://172.16.3.105:3306/matricula";
     private static final String usuario="root";
     private static final String clave="root";
     /**
@@ -33,6 +33,61 @@ public class Tarea13 {
                 String producto = rs.getString("Nomb_Producto");
                 System.out.println(producto);
             }
+              
+             
+             System.out.println("-------------"
+                     + "--------------------------------");
+             PreparedStatement ps2;
+             ps2 = conex.prepareStatement(""
+                     + "select * from productos where "
+                     + "desc_producto like '%light%';");
+             ResultSet rs2;
+             rs2 = ps2.executeQuery();
+             while(rs2.next()) {
+                String producto2 
+                        = rs2.getString(
+                                "Nomb_Producto");
+                System.out.println(producto2);
+            }
+
+             System.out.println("-------------"
+                     + "--------------------------------");
+             PreparedStatement ps3;
+             ps3 = conex.prepareStatement(""
+                     + "select * from vehiculo where "
+                     + "Colo_Vehiculo='1';");
+             ResultSet rs3;
+             rs3 = ps3.executeQuery();
+             
+             while(rs3.next()) {
+                String IdVehiculo
+                        = rs3.getString(
+                                "Id_Vehiculo");
+                String ModeVehiculo
+                        = rs3.getString(
+                                "Mode_Vehiculo");
+                String PlacaVehiculo
+                        = rs3.getString(
+                                "Plac_Vehiculo");
+                System.out.println("IdVehiculo : "+IdVehiculo
+                        +"\n"+"Modelo : "+ModeVehiculo
+                        +"\n"+"Placa : "+PlacaVehiculo);
+            }
+            
+              System.out.println("-------------"
+                     + "--------------------------------");
+             PreparedStatement ps4;
+             ps4 = conex.prepareStatement(""
+                     + " select round(avg(nota_notas),2) as "
+                     + "promedio from notas;");
+             ResultSet rs4;
+             rs4 = ps4.executeQuery();
+             
+             if(rs4.next()) {
+                String promedio= rs4.getString("promedio");                
+                System.out.println("Promedio : "+promedio);
+            }
+             
         }
         else {
             System.out.println("No has podido conectarte ");
