@@ -11,7 +11,7 @@ import java.sql.*;
 public class Tarea13 {
 
     private static final String driver = "com.mysql.cj.jdbc.Driver";
-    private static final String bbdd = "jdbc:mysql://172.16.3.105:3306/matricula";
+    private static final String bbdd = "jdbc:mysql://localhost:3306/matricula";
     private static final String usuario="root";
     private static final String clave="root";
     /**
@@ -74,7 +74,7 @@ public class Tarea13 {
                         +"\n"+"Placa : "+PlacaVehiculo);
             }
             
-              System.out.println("-------------"
+            System.out.println("-------------"
                      + "--------------------------------");
              PreparedStatement ps4;
              ps4 = conex.prepareStatement(""
@@ -87,6 +87,77 @@ public class Tarea13 {
                 String promedio= rs4.getString("promedio");                
                 System.out.println("Promedio : "+promedio);
             }
+             
+             
+             System.out.println("-------------"
+                     + "--------------------------------");
+             PreparedStatement ps5;
+             ps5 = conex.prepareStatement("update notas set nota_notas=10 where id_notas=3;");
+             int rs5;
+             rs5 = ps5.executeUpdate();
+             
+             if(rs5>0) {                
+                System.out.println("Esta actualizado");                                
+                ps5 = conex.prepareStatement("select * from notas where id_notas=3;");
+                ResultSet rs6;
+                rs6 = ps5.executeQuery();
+                if(rs6.next()) {
+                    String nota = rs6.getString("nota_notas");                
+                    String alumno = rs6.getString("Nombre_notas");                
+                    System.out.println("Alumno:"+alumno + ", nota : "+nota);
+                }             
+             }
+             else {
+                 System.out.println("No Esta actualizado");
+             }
+             
+               System.out.println("-------------"
+                     + "--------------------------------");
+             PreparedStatement ps7;
+             ps7 = conex.prepareStatement("update productos set desc_producto='LACTEOS Y YOGURES' where id_producto=41;");
+             int rs7;
+             rs7 = ps7.executeUpdate();
+             
+             if(rs7>0) {                
+                System.out.println("Esta actualizado productos");                                
+                ps7 = conex.prepareStatement("select * from productos where id_producto=41;");
+                ResultSet rs8;
+                rs8 = ps7.executeQuery();
+                if(rs8.next()) {
+                    String nombreproducto = rs8.getString("Nomb_Producto");                
+                    String descproducto = rs8.getString("Desc_Producto");                
+                    System.out.println("producto:"+nombreproducto + ", categoria : "+descproducto);
+                }             
+             }
+             else {
+                 System.out.println("No Esta actualizado");
+             }
+             
+             
+               System.out.println("-------------"
+                     + "--------------------------------");
+             PreparedStatement ps9;
+             ps9 = conex.prepareStatement(
+                     "insert into productos(Nomb_Producto,Desc_Producto,Prec_Producto,Cant_Producto) "
+                             + "values('TELEVISOR','TV',1200,10);");
+             int rs9;
+             rs9 = ps9.executeUpdate();
+             
+             if(rs9>0) {                
+                System.out.println("Esta insertado el producto");                                
+                ps9 = conex.prepareStatement("select * from productos order by Id_Producto desc;");
+                ResultSet rs10;
+                rs10 = ps9.executeQuery();
+                if(rs10.next()) {
+                    String nombreproducto = rs10.getString("Nomb_Producto");                
+                    String descproducto = rs10.getString("Desc_Producto");                
+                    System.out.println("producto:"+nombreproducto + ", categoria : "+descproducto);
+                }             
+             }
+             else {
+                 System.out.println("No Esta insertado");
+             }
+             
              
         }
         else {
