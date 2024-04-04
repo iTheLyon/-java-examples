@@ -158,6 +158,32 @@ public class Tarea13 {
                  System.out.println("No Esta insertado");
              }
              
+             System.out.println("-------------"
+                     + "--------------------------------");
+             PreparedStatement ps11;
+             ps11 = conex.prepareStatement(
+                     "delete from productos where Id_Producto=12");
+             int rs12;
+             rs12 = ps11.executeUpdate();
+             
+             if(rs12>0) {                
+                System.out.println("Esta eliminado el producto");                                
+                ps11 = conex.prepareStatement("select * from productos where id_producto=13;");
+                ResultSet rs13;
+                rs13 = ps11.executeQuery();
+                if(rs13.next()) {
+                    String nombreproducto = rs13.getString("Nomb_Producto");                
+                    String descproducto = rs13.getString("Desc_Producto");                
+                    System.out.println("producto:"+nombreproducto + ", categoria : "+descproducto);
+                } 
+                else {
+                    System.out.println("no existe el producto");
+                }
+             }
+             else {
+                 System.out.println("No Esta insertado");
+             }
+             
              
         }
         else {
