@@ -16,7 +16,7 @@ public class Covid {
     private static final String driver = "com.mysql.cj.jdbc.Driver";
     private static final String bbdd = "jdbc:mysql://localhost:3306/covid";
     private static final String usuario="root";
-    private static final String clave="root";
+    private static final String clave="";
     
      public static void main(String[] args) throws SQLException {
         // TODO code application logic here
@@ -200,6 +200,8 @@ public class Covid {
                    }
                 break;
                 case "4" :
+                    //eliminar
+                    break;
             }
             
             
