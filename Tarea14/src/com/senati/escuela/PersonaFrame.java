@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.senati.escuela;
+import java.awt.HeadlessException;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,21 +34,22 @@ public class PersonaFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jOptionPanel = new javax.swing.JOptionPane();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtClave = new javax.swing.JTextField();
+        jBtnBuscar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        txtDomicilio = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txtFechaNacimiento = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbxGenero = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -56,25 +60,31 @@ public class PersonaFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Clave :");
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtClave.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtClave.setName("txtClave"); // NOI18N
 
-        jButton1.setText("Buscar");
+        jBtnBuscar.setText("Buscar");
+        jBtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnBuscarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setText("Nombre :");
 
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setText("Domicilio :");
         jLabel3.setToolTipText("");
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtDomicilio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
-        jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                txtEmailActionPerformed(evt);
             }
         });
 
@@ -84,31 +94,31 @@ public class PersonaFrame extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel5.setText("Email:");
 
-        jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        txtTelefono.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                txtTelefonoActionPerformed(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel6.setText("Fecha Nacimiento");
 
-        jTextField8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        txtFechaNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtFechaNacimiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                txtFechaNacimientoActionPerformed(evt);
             }
         });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel7.setText("Genero :");
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cbxGenero.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        cbxGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
+        cbxGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cbxGeneroActionPerformed(evt);
             }
         });
 
@@ -155,9 +165,9 @@ public class PersonaFrame extends javax.swing.JFrame {
                                 .addGap(53, 53, 53))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
-                                .addComponent(jTextField1)
+                                .addComponent(txtClave)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jBtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(172, 172, 172))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,13 +181,13 @@ public class PersonaFrame extends javax.swing.JFrame {
                         .addGap(72, 72, 72)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cbxGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jTextField4)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField7)
-                            .addComponent(jTextField6)
-                            .addComponent(jTextField8))))
+                            .addComponent(txtDomicilio)
+                            .addComponent(txtNombre)
+                            .addComponent(txtTelefono)
+                            .addComponent(txtEmail)
+                            .addComponent(txtFechaNacimiento))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -188,35 +198,35 @@ public class PersonaFrame extends javax.swing.JFrame {
                         .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -229,33 +239,112 @@ public class PersonaFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_txtEmailActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_txtTelefonoActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void txtFechaNacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaNacimientoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_txtFechaNacimientoActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cbxGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxGeneroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cbxGeneroActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        
-        
-        
-        
+        // TODO add your handling code here:          
+         try  {  
+            persona = new Persona();                   
+            persona.clave=txtClave.getText();
+            persona.nombre = txtNombre.getText();
+            persona.domicilio =txtDomicilio.getText(); 
+            persona.telefono = txtTelefono.getText();
+            persona.email = txtEmail.getText();
+            String fechaNac = txtFechaNacimiento.getText();
+            Date fecha = java.sql.Date.valueOf(fechaNac);
+            persona.fechaNacimiento = fecha;
+            persona.genero = cbxGenero.getSelectedItem().toString();                       
+                  
+            int rs;
+            rs =persona.insertar();
+             
+            if(rs>0) {
+              jOptionPanel.showMessageDialog(
+                      null,
+                      "Se registro persona");           
+            }
+            else {
+               jOptionPanel.showMessageDialog(
+                       null,
+                       "Error al registrar persona");           
+            }        
+            this.limpiarCajas();         
+        }
+        catch(HeadlessException | SQLException e) {
+            System.err.println(e);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        try  {  
+            int id =  persona.id;
+            persona = new Persona();                   
+            persona.id = id;
+            persona.clave=txtClave.getText();
+            persona.nombre = txtNombre.getText();
+            persona.domicilio =txtDomicilio.getText(); 
+            persona.telefono = txtTelefono.getText();
+            persona.email = txtEmail.getText();
+            String fechaNac = txtFechaNacimiento.getText();
+            Date fecha = java.sql.Date.valueOf(fechaNac);
+            persona.fechaNacimiento = fecha;
+            persona.genero = cbxGenero.getSelectedItem().toString();                       
+                  
+            int rs;
+            rs =persona.actualizar();
+             
+            if(rs>0) {
+              jOptionPanel.showMessageDialog(
+                      null,
+                      "Se registro persona");           
+            }
+            else {
+               jOptionPanel.showMessageDialog(
+                       null,
+                       "Error al registrar persona");           
+            }        
+            this.limpiarCajas();         
+        }
+        catch(HeadlessException | SQLException e) {
+            System.err.println(e);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    public Persona persona;
+    private void jBtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnBuscarActionPerformed
+        // TODO add your handling code here:
+          persona = new Persona();          
+          Persona p;
+          try {
+            p = persona.buscar(txtClave.getText());
+            txtNombre.setText(p.nombre);
+            txtDomicilio.setText(p.domicilio);
+            txtTelefono.setText(p.telefono);
+            txtEmail.setText(p.email);
+            String fecha = p.fechaNacimiento == null ? "" :
+                    p.fechaNacimiento.toString();
+            txtFechaNacimiento.setText(fecha);
+            cbxGenero.setSelectedItem(p.genero);
+            
+          } catch (SQLException ex) {
+            //Logger.getLogger(PersonaFrame.class.getName()).log(Level.SEVERE, null, ex);
+          }   
+    }//GEN-LAST:event_jBtnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -287,50 +376,33 @@ public class PersonaFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PersonaFrame().setVisible(true);
-                getConection();
+                new PersonaFrame().setVisible(true);              
             }
         });
 
        
 
     }
-    public static Connection getConection() {
-          Connection con = null;
-          
-          String base = "escuela";//Nombre de la base de datos
-          String url = "jdbc:mysql://localhost:3306/"+ base;//Direccion, puerto y nombre de la Base de Datos
-          String user = "root";//Usuario de Acceso a MySQL
-          String password = "";//Password del Usuario
-
-          try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(url,user,password);
-            System.out.println("se conecto");
-          } catch (ClassNotFoundException | SQLException e) {
-            System.err.print(e);
-          }
-            return con;
-       }
+    
     
     public void limpiarCajas() {
-        jTextField1.setText("");  
-        jTextField3.setText("");
-        jTextField4.setText("");
-        jTextField7.setText("");
-        jTextField6.setText("");
-        jTextField8.setText("");
+        txtClave.setText("");  
+        txtNombre.setText("");
+        txtDomicilio.setText("");
+        txtTelefono.setText("");
+        txtEmail.setText("");
+        txtFechaNacimiento.setText("");
     }
  
  
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> cbxGenero;
+    private javax.swing.JButton jBtnBuscar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -338,11 +410,12 @@ public class PersonaFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JOptionPane jOptionPanel;
+    private javax.swing.JTextField txtClave;
+    private javax.swing.JTextField txtDomicilio;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtFechaNacimiento;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }
